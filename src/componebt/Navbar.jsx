@@ -17,6 +17,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { useAppStore } from '../util/appstore';
 import Sidenavbar from './Sidenavbar';
+import { Link } from 'react-router-dom';
 const AppBar = styled(MuiAppBar, {
     shouldForwardProp: (prop) => prop !== 'open',
   })(({ theme}) => ({
@@ -107,7 +108,7 @@ const dopen=useAppStore((state)=>state.dopen)
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+      <MenuItem onClick={handleMenuClose}><Link to={'/about'} style={{textDecoration:"none", color:'black'}}>Profile</Link></MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
     </Menu>
   );
@@ -185,7 +186,7 @@ const dopen=useAppStore((state)=>state.dopen)
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-            MUI
+            Deepak
           </Typography>
           <Search>
             <SearchIconWrapper>
