@@ -23,6 +23,7 @@ import {
   updateDoc,
   deleteDoc,
   doc,
+  namedQuery,
 } from "firebase/firestore";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -30,6 +31,7 @@ import Swal from "sweetalert2";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { useAppStore } from "../util/appstore";
+import Editproduct from "../componebt/Editproduct";
 const style = {
   position: 'absolute',
   top: '50%',
@@ -49,6 +51,8 @@ export default function UsersList() {
   // const [rows, setRows] = useState([]);
   const empCollectionRef = collection(db, "products");
   const [open, setOpen] = useState(false);
+  const [form, setForm] = useState("");
+  const [editOpen, setEditOpen] = useState(false);
   const setRows=useAppStore((state)=>state.setRows);
   const rows=useAppStore((state)=>state.rows)
   const handleOpen=()=>{
@@ -103,6 +107,23 @@ export default function UsersList() {
       getUsers();
     }
   };
+  const handleEditopen=()=>{
+    setEditOpen(true)
+  }
+  const handleEditclose=()=>{
+    setEditOpen(false)
+  }
+  const editData=(id,name,price ,category)=>{
+const data={
+  id:id,
+  name:name,
+  price:price,
+  category:category
+};
+setForm(data);
+handleEditopen()
+
+  }
 
   return (
     <>
@@ -114,6 +135,15 @@ export default function UsersList() {
       >
        <Box sx={style}>
        <Addproductlist closeEvent={handleClose}/>
+       </Box>
+      </Modal>
+      <Modal
+        open={editOpen}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+       <Box sx={style}>
+       <Editproduct closeEvent={handleEditclose} fid={form}/>
        </Box>
       </Modal>
     </div>
@@ -196,7 +226,7 @@ export default function UsersList() {
                                 cursor: "pointer",
                               }}
                               className="cursor-pointer"
-                              // onClick={() => editUser(row.id)}
+                              onClick={() => editData(row.id,row.name,row.price,row.category)}
                             />
                             <DeleteIcon
                               style={{

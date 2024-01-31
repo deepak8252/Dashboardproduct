@@ -12,9 +12,6 @@ import { getDocs } from "firebase/firestore";
 import {
   collection,
   addDoc,
-  updateDoc,
-  deleteDoc,
-  doc,
 } from "firebase/firestore";
 import { db } from "../util/firebase";
 import Swal from "sweetalert2";
@@ -24,7 +21,6 @@ const Addproductlist = ({closeEvent}) => {
   const [name,setname]=useState("");
   const [price,setPrice]=useState("");
   const [cateogery,setCateogery]=useState("");
-  // const [rows, setRows] = useState([]);
   const setRows=useAppStore((state)=>state.setRows)
   const handleNameChange=(e)=>{
        setname(e.target.value)
@@ -70,7 +66,7 @@ const Addproductlist = ({closeEvent}) => {
         onChange={handleNameChange}
         />
         </Grid>
-        <Grid item sm={6}>
+        <Grid item sm={6} xs={6}>
         <TextField id="standard-basic" label="Price" 
           InputProps={{
             startAdornment: (
@@ -83,7 +79,8 @@ const Addproductlist = ({closeEvent}) => {
         onChange={handlePriceChange} value={price}
         />
         </Grid>
-        <Grid item sm={6}>
+        
+        <Grid item sm={6} xs={6}>
         <TextField id="standard-basic" label="Cateogery" variant="outlined" sx={{minWidth:"100%"  }} size="small"
         value={cateogery}
         onChange={handleCateogeryChange}

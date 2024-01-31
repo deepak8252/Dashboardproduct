@@ -15,6 +15,11 @@ import ListItemText from '@mui/material/ListItemText';
 import { useNavigate } from 'react-router-dom';
 import MailIcon from '@mui/icons-material/Mail';
 import { useAppStore } from '../util/appstore';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import HomeIcon from '@mui/icons-material/Home';
+import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
+import Inventory2Icon from '@mui/icons-material/Inventory2';
+import SettingsIcon from '@mui/icons-material/Settings';
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -102,7 +107,7 @@ const handlehide=()=>{
                     justifyContent: 'center',
                   }}
                 >
-             <MailIcon />
+             <HomeIcon />
                 </ListItemIcon>
                 <ListItemText primary="Home" sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
@@ -122,7 +127,7 @@ const handlehide=()=>{
                     justifyContent: 'center',
                   }}
                 >
-             <MailIcon />
+             <ProductionQuantityLimitsIcon />
                 </ListItemIcon>
                 <ListItemText primary="Analysis" sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
@@ -142,7 +147,7 @@ const handlehide=()=>{
                     justifyContent: 'center',
                   }}
                 >
-             <MailIcon />
+               <AccountBoxIcon />
                 </ListItemIcon>
                 <ListItemText primary="About" sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
@@ -162,7 +167,7 @@ const handlehide=()=>{
                     justifyContent: 'center',
                   }}
                 >
-                 <MailIcon />
+                 <Inventory2Icon />
                 </ListItemIcon>
                 <ListItemText primary="Product" sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
@@ -184,7 +189,7 @@ const handlehide=()=>{
                     justifyContent: 'center',
                   }}
                 >
-                  <MailIcon />
+                  <SettingsIcon />
                 </ListItemIcon>
                 <ListItemText primary="Setting" sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
