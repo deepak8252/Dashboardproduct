@@ -19,8 +19,8 @@ import Addproductlist from "../componebt/Addproductlist";
 import {
   collection,
   getDocs,
-  // addDoc,
-  // updateDoc,
+  addDoc,
+  updateDoc,
   deleteDoc,
   doc,
 } from "firebase/firestore";
@@ -29,6 +29,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import Swal from "sweetalert2";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
+import { useAppStore } from "../util/appstore";
 const style = {
   position: 'absolute',
   top: '50%',
@@ -45,14 +46,18 @@ const style = {
 export default function UsersList() {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
-  const [rows, setRows] = useState([]);
+  // const [rows, setRows] = useState([]);
   const empCollectionRef = collection(db, "products");
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const setRows=useAppStore((state)=>state.setRows);
+  const rows=useAppStore((state)=>state.rows)
+  const handleOpen=()=>{
+    setOpen(true)
+  }
+  const handleClose = () => {setOpen(false)};
   useEffect(() => {
     getUsers();
-  });
+  },[]);
 
   const getUsers = async () => {
     const data = await getDocs(empCollectionRef);
@@ -104,13 +109,12 @@ export default function UsersList() {
       <div>
       <Modal
         open={open}
-        onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
-         <Addproductlist/>
-        </Box>
+       <Box sx={style}>
+       <Addproductlist closeEvent={handleClose}/>
+       </Box>
       </Modal>
     </div>
       {rows.length > 0 && (
