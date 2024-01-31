@@ -1,0 +1,33 @@
+.paddingall{
+  padding: 10px;
+}
+.price_title{
+font-weight: 600;
+text-transform: capitalize;
+}
+.pricetotal_title{
+ font-size: 14px;
+ text-transform: capitalize;
+}
+.icon_style{
+  margin-top:20px !important ;
+  margin-left:20px !important ;
+  color: white;
+}
+.icon_styleblack{
+  color: black;
+  margin-top:20px !important ;
+  margin-left:20px !important ;
+}
+.gradient{
+  background: linear-gradient(150deg,rgba(40,34,78,1)0%,rgba(20,47,141,1)100%);
+}
+.gradientlight{
+  background: linear-gradient(158deg,rgba(53,138,148,1)0%,rgba(91,180,96,1)100%);
+}
+.bgcolor{
+  min-height: 100vh;
+  background-color: #ffff;
+  background: linear-gradient(158deg,rgb(224,224,224)0%,rgb(233,237,254));
+  width: 100% !important;
+}
